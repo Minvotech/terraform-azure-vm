@@ -866,44 +866,7 @@ else
   fail=$((fail + 1))
 fi
 
-#Ensure /etc/hosts.deny is configured
-echo
-echo -e "${RED}3.4.3${NC} Ensure /etc/hosts.deny is configured"
-echo "ALL: ALL" >> /etc/hosts.deny
-policystatus=$?
-if [[ "$policystatus" -eq 0 ]]; then
-  echo -e "${GREEN}Remediated:${NC} Ensure /etc/hosts.deny is configured"
-  success=$((success + 1))
-else
-  echo -e "${RED}UnableToRemediate:${NC} Ensure /etc/hosts.deny is configured"
-  fail=$((fail + 1))
-fi
 
-#Ensure permissions on /etc/hosts.allow are configured
-echo
-echo -e "${RED}3.4.4${NC} Ensure permissions on /etc/hosts.allow are configured"
-chown root:root /etc/hosts.allow && chmod 644 /etc/hosts.allow
-policystatus=$?
-if [[ "$policystatus" -eq 0 ]]; then
-  echo -e "${GREEN}Remediated:${NC} Ensure permissions on /etc/hosts.allow are configured"
-  success=$((success + 1))
-else
-  echo -e "${RED}UnableToRemediate:${NC} Ensure permissions on /etc/hosts.allow are configured"
-  fail=$((fail + 1))
-fi
-
-#Ensure permissions on /etc/hosts.deny are configured
-echo
-echo -e "${RED}3.4.5${NC} Ensure permissions on /etc/hosts.deny are configured"
-chown root:root /etc/hosts.deny && chmod 644 /etc/hosts.deny
-policystatus=$?
-if [[ "$policystatus" -eq 0 ]]; then
-  echo -e "${GREEN}Remediated:${NC} Ensure permissions on /etc/hosts.deny are configured"
-  success=$((success + 1))
-else
-  echo -e "${RED}UnableToRemediate:${NC} Ensure permissions on /etc/hosts.deny are configured"
-  fail=$((fail + 1))
-fi
 
 ############################################################################################################################
 
